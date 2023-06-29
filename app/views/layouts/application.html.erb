@@ -11,6 +11,18 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= yield %>
+    <div class="container text-center bg-body-tertiary">
+      <h1>Surya</h1>
+      <nav class="navbar navbar-expand-lg">
+        <ul class="navbar-nav mx-auto gap-3 w-75">
+          <li class="col nav-item"><%= link_to "Home", root_path, class: "w-100 btn btn-outline-secondary #{'active' if current_page?(controller: 'home')}" %></li>
+          <li class="col nav-item"><%= link_to 'Property Browser', properties_path, class: "w-100 btn btn-outline-secondary #{'active' if current_page?(controller: 'properties')}" %></li>
+          <li class="col nav-item"><%= link_to 'FAQ', '#', class: 'w-100 btn btn-outline-secondary' %></li>
+          <li class="col nav-item"><%= link_to 'Contact Us', '#', class: 'w-100 btn btn-outline-secondary' %></li>
+          <li class="col nav-item"><%= link_to 'About Us', '#', class: 'w-100 btn btn-outline-secondary' %></li>
+        </ul>
+      </nav>
+      <%= yield %>
+    </div>
   </body>
 </html>
