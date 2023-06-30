@@ -1,0 +1,64 @@
+<div id="<%= dom_id property %>">
+  <div class="row row-cols-1 row-cols-md-2">
+    <%# Left Column %>
+    <div class="col">
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <% property.images.each_with_index do |image, i| %>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>" aria-label="Slide <%= i + 1 %>"></button>
+          <% end %>
+        </div>
+        <div class="carousel-inner">
+          <% property.images.each_with_index do |image, i| %>
+            <div class="carousel-item <%='active' if i == 0 %>">
+              <%= image_tag image, class: "d-block w-100 rounded" %>
+              <div class="carousel-caption d-none d-md-block">
+                <h5><%= image.filename %></h5>
+                <p>More details go here.</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="my-3">
+        <p>
+          <strong>Price:</strong>
+          <%= number_to_currency(property.price, unit: "£") %>
+        </p>
+        <p>
+          <strong>Size:</strong>
+          <%= property.size %>
+        </p>
+        <p>
+          <strong>Location:</strong>
+          <%= property.location %>
+        </p>
+      </div>
+    </div>
+    <%# Right Column %>
+    <div class="col">
+      <p>
+        <strong>Details:</strong>
+        <%= property.details %>
+      </p>
+    </div>
+  </div>
+  <p>
+    <strong>House Gallery:</strong>
+    <div class="row row-cols-2">
+      <% property.images.each do |image| %>
+        <div class="col">
+          <%= image_tag image, class: "d-block w-100 rounded mb-3" %>
+        </div>
+      <% end %>
+    </div>
+  </p>
+</div>

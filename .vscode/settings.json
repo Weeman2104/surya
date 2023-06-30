@@ -1,0 +1,18 @@
+{
+    "[erb]": {
+        "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+        "editor.formatOnSave": true
+    },
+    "files.associations": {
+        "*.html.erb": "erb"
+    },
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Surya",
+            "group": "Learning",
+            "database": "${workspaceFolder:surya}/db/development.sqlite3"
+        }
+    ]
+}

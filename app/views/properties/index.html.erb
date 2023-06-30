@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+<h1>Welcome To The Property Browser</h1>
+<div id="properties">
+  <div class="row row-cols-2">
+    <% @properties.each do |property| %>
+      <div class="col">
+        <%= link_to property do %>
+          <%= image_tag property.images.first, class: "d-block w-100 rounded" %>
+          <p>
+            Price: <%= number_to_currency(property.price, unit: '£') %>
+            Size: <%= property.size %>
+            Location: <%= property.location %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= link_to "New property", new_property_path, class:"btn btn-success" %>
